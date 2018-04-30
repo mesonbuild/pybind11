@@ -1,4 +1,4 @@
-project('pybind11', 'cpp', default_options : ['cpp_std=c++14'], license : 'BSD-style', version : '2.2.2')
+project('pybind11', 'cpp', default_options : ['cpp_std=c++14'], license : 'BSD-style', version : '2.2.3')
 
 py3_dep = dependency('python3')
 
