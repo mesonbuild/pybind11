@@ -2,9 +2,16 @@ project('pybind11', 'cpp', default_options : ['cpp_std=c++11'], license : 'BSD-s
 
 py3_dep = dependency('python3')
 
+# https://github.com/mesonbuild/meson/issues/4117
+if host_machine.system() == 'windows'
+	python_ext_dep = py3_dep
+else
+	python_ext_dep = py3_dep.partial_dependency(compile_args: true)
+endif
+
 pybind11_incdir = include_directories('include')
 
 pybind11_dep = declare_dependency(
 	include_directories : pybind11_incdir,
-	dependencies : py3_dep
+	dependencies : python_ext_dep
 )
